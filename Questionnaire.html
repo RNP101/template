@@ -14,15 +14,14 @@
      */
     window.APP_CONFIG = {
       // --- Backend URL ---
-      // !! REMPLACEZ CECI par l'URL de votre Google Apps Script déployé !!
-      WEBAPP_URL: "REMPLACEZ_PAR_VOTRE_URL_DE_WEBAPP_GOOGLE_SCRIPT",
+      WEBAPP_URL: "https://script.google.com/macros/s/AKfycbxRz2Od1d82fQfik128ijnuCJ4LWkRWDMW8lKZqqt9HX52NINWXoU-LcfuJo7tzENY/exec", // VOTRE URL RECEIVER
 
       // --- Branding ---
       BRAND: {
-        TITLE: "Feedback App (Modèle)", 
-        LOGO_URL: "https://placehold.co/120x40/f0f0f0/333?text=Logo",
-        MARK_URL: "https://placehold.co/20x20/4f46e5/ffffff?text=F",
-        FAVICON_URL: "https://placehold.co/32x32/4f46e5/ffffff?text=F"
+        TITLE: "Feedback CHOPS - Exprimez vous ", 
+        LOGO_URL: "./CHOPStandard.svg",
+        MARK_URL: "./CHOPiBasic.svg",
+        FAVICON_URL: "./CHOPiBasic.svg"
       },
 
       // --- Limites d'enregistrement ---
@@ -31,53 +30,183 @@
         MAX_BYTES: 10 * 1024 * 1024, // 10MB
       },
 
-      // --- Questions (À personnaliser) ---
+      // --- Questions (Inchangé) ---
       QUESTIONS: {
-        etudiant: { declic: "En tant qu'étudiant, quel a été le 'déclic' ou le moment 'aha' où vous avez saisi l'utilité de ce projet ?", usage: "Comment avez-vous concrètement utilisé ce projet ?", clarte: "Qu'est-ce qui a le plus clarifié votre compréhension du framework ? (ex: un cours, un exemple...)", equipe: "Si vous l'avez utilisé en groupe, comment ce projet a-t-il structuré vos échanges ?", CHOPi: "Dans votre parcours d'apprentissage, qu'est-ce qui vous a plu ou manqué dans l'outil ?", reutilisation: "Pensez-vous réutiliser ce code à l'avenir ? Si oui, dans quel type de projet ou de contexte ?", libre: "Vous avez la parole : quel est le retour le plus important que vous aimeriez nous donner ?" },
-        enseignant: { declic: "En tant qu'enseignant, quel 'déclic' pédagogique avez-vous eu en découvrant ce projet ?", usage: "Comment avez-vous concrètement utilisé ce projet dans un de vos cours ou ateliers ?", clarte: "Du point de vue de l'enseignant, qu'est-ce qui vous semble le plus efficace pour transmettre ce framework aux étudiants ?", equipe: "Comment vos étudiants ont-ils réagi à la méthode ? Qu'est-ce qui a bien fonctionné ou non en classe ?", CHOPi: "Qu'avez-vous pensé de cet outil comme support pédagogique ? Que lui manque-t-il ?", reutilisation: "Pensez-vous réutiliser ce projet dans votre programme de cours à l'avenir ? Si oui, comment ?", libre: "Vous avez la parole : quel est le retour pédagogique le plus important que vous aimeriez nous donner ?" },
-        autre: { declic: "Dans votre contexte particulier, quel a été le 'déclic' ou le moment 'aha' où vous avez saisi l'utilité de ce projet ?", usage: "Comment avez-vous concrètement utilisé ce projet ?", clarte: "Qu'est-ce qui a le plus clarifié votre compréhension du framework ?", equipe: "Si vous l'avez utilisé en groupe, comment ce projet a-t-il structuré vos échanges ?", CHOPi: "Dans votre situation, qu'est-ce qui vous a plu ou manqué dans l'outil ?", reutilisation: "Pensez-vous réutiliser ce projet à l'avenir ? Si oui, dans quel type de projet ou de contexte ?", libre: "Vous avez la parole : quel est le retour le plus important que vous aimeriez nous donner ?" }
+        etudiant: { declic: "En tant qu'étudiant, quel a été le 'déclic' ou le moment 'aha' où vous avez saisi l'utilité de CHOPS ?", usage: "Comment avez-vous concrètement utilisé CHOPS ou CHOPi pour un projet académique ou personnel ?", clarte: "Qu'est-ce qui a le plus clarifié votre compréhension du framework ? (ex: un cours, un exemple, CHOPi...)", equipe: "Si vous l'avez utilisé en groupe, comment CHOPS a-t-il structuré vos échanges ou votre travail d'équipe ?", CHOPi: "Dans votre parcours d'apprentissage, qu'est-ce qui vous a plu ou manqué dans l'outil CHOPi ?", reutilisation: "Pensez-vous réutiliser CHOPS à l'avenir ? Si oui, dans quel type de projet ou de contexte ?", libre: "Vous avez la parole : quel est le retour le plus important que vous aimeriez nous donner ?" },
+        entrepreneur: { declic: "En tant qu'entrepreneur, quel problème concret pensiez-vous résoudre ou quel 'déclic' avez-vous eu avec CHOPS ?", usage: "Comment avez-vous appliqué CHOPS ou CHOPi sur un de vos projets ou 'use case' d'entreprise ?", clarte: "Qu'est-ce qui, dans le framework, a le plus aidé à clarifier votre vision stratégique ou celle de vos équipes ?", equipe: "Comment vos équipes (ou vous-même) ont-elles interagi avec la méthode ? Quels ont été les points de friction ou de fluidité ?", CHOPi: "En tant que décideur, qu'avez-vous pensé de l'outil CHOPi ? Qu'est-ce qui lui manque pour être un outil pro ?", reutilisation: "Voyez-vous un potentiel de réutilisation de CHOPS pour d'autres 'use cases' dans votre organisation ?", libre: "Vous avez la parole : quel est le retour leF plus stratégique que vous aimeriez nous donner ?" },
+        freelance: { declic: "En tant que freelance, quel a été le 'déclic' où vous vous êtes dit 'tiens, CHOPS pourrait m'aider avec mes clients' ?", usage: "Avez-vous pu utiliser CHOPS ou CHOPi (même mentalement) pour cadrer la mission d'un client ou un projet personnel ?", clarte: "Quelle partie du framework vous semble la plus utile pour structurer et vendre vos prestations de conseil ou de production ?", equipe: "En travaillant (souvent seul ou en petite équipe), comment CHOPS vous aide-t-il à mieux dialoguer avec vos clients/partenaires ?", CHOPi: "En tant qu'indépendant, que vous a-t-il plu ou manqué dans l'outil CHOPi pour vos propres besoins ?", reutilisation: "Pensez-vous intégrer CHOPS à votre 'stack' d'outils méthodologiques pour vos futures missions ?", libre: "Vous avez la parole : quel est le retour le plus pertinent que vous aimeriez nous donner ?" },
+        enseignant: { declic: "En tant qu'enseignant, quel 'déclic' pédagogique avez-vous eu en découvrant le framework CHOPS ?", usage: "Comment avez-vous concrètement utilisé CHOPS ou CHOPi dans un de vos cours ou ateliers ?", clarte: "Du point de vue de l'enseignant, qu'est-ce qui vous semble le plus efficace pour transmettre ce framework aux étudiants ?", equipe: "Comment vos étudiants ont-ils réagi à la méthode ? Qu'est-ce qui a bien fonctionné ou non en classe ?", CHOPi: "Qu'avez-vous pensé de l'outil CHOPi comme support pédagogique ? Que lui manque-t-il ?", reutilisation: "Pensez-vous réutiliser CHOPS dans votre programme de cours à l'avenir ? Si oui, comment ?", libre: "Vous avez la parole : quel est le retour pédagogique le plus important que vous aimeriez nous donner ?" },
+        autre: { declic: "Dans votre contexte particulier, quel a été le 'déclic' ou le moment 'aha' où vous avez saisi l'utilité de CHOPS ?", usage: "Comment avez-vous concrètement utilisé CHOPS ou CHOPi dans votre projet ?", clarte: "Qu'est-ce qui a le plus clarifié votre compréhension du framework ?", equipe: "Si vous l'avez utilisé en groupe, comment CHOPS a-t-il structuré vos échanges ou votre travail ?", CHOPi: "Dans votre situation, qu'est-ce qui vous a plu ou manqué dans l'outil CHOPi ?", reutilisation: "Pensez-vous réutiliser CHOPS à l'avenir ? Si oui, dans quel type de projet ou de contexte ?", libre: "Vous avez la parole : quel est le retour le plus important que vous aimeriez nous donner ?" }
       }
     };
   </script>
-  <title id="appTitle">Feedback App</title>
-  <meta name="description" content="Collecte sécurisée de retours vocaux.">
+  <title id="appTitle">Feedback CHOPS</title>
+  <meta name="description" content="Mini-Voiceform CHOPS — collecte sécurisée de retours vocaux.">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg-start: #f3f4f6; --bg-end: #e0e7ff; --bg-mid: #dbeafe; --card-bg: rgba(255, 255, 255, 0.45); --card-border: rgba(255, 255, 255, 0.7); --card-shadow: rgba(0, 0, 0, 0.05); --text-primary: #111827; --text-secondary: #4b5563; --accent-primary: #4f46e5; --accent-primary-hover: #4338ca; --accent-success: #16a34a; --accent-record: #dc2626; --accent-pause: #f59e0b; }
-    body { background: linear-gradient(-45deg, var(--bg-start), var(--bg-mid), var(--bg-end), var(--bg-mid)); background-size: 400% 400%; animation: gradientBG 25s ease infinite; color: var(--text-primary); padding-bottom: 80px; font-family: Inter, sans-serif; }
-    @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    .glass-bubble { background-color: var(--card-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--card-border); box-shadow: 0 8px 32px 0 var(--card-shadow); transition: all 0.3s ease; border-radius: 1rem; }
-    .form-input { background-color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(209, 213, 219, 0.8); color: var(--text-primary); border-radius: 0.5rem; }
-    .form-input:focus { background-color: rgba(255, 255, 255, 0.9); border-color: var(--accent-primary); box-shadow: 0 0 0 2px var(--accent-primary); outline: none; }
-    .btn-disabled { opacity: 0.5; cursor: not-allowed; }
-    #floatingProgress { background-color: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--card-border); transition: opacity 0.3s, transform 0.3s; z-index: 60; border-top-left-radius: 1rem; border-top-right-radius: 1rem;}
-    .progress-bar-inner { background: linear-gradient(90deg, var(--accent-primary), var(--accent-success)); background-size: 200% 100%; animation: progress-active 2s ease-in-out infinite; transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 9999px;}
-    @keyframes progress-active { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
-    .hidden { display: none; }
-    #profileModal, #completionModal { align-items: flex-start; padding-top: 1rem; padding-bottom: 1rem; }
-    @media (min-width: 640px) { #profileModal, #completionModal { align-items: center; } }
-    #profileModal .glass-bubble, #completionModal .glass-bubble { overflow-y: auto; max-height: 90vh; }
-    #profileModal form { overflow-y: visible; padding-bottom: 0; flex-grow: 0; }
-    .modal-footer { padding-top: 1rem; text-align: right; }
-    .modal-footer.flex { display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem; }
-    #toasts { z-index: 70; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .animate-spin { animation: spin 1s linear infinite; }
+    /* Styles CSS pour l'application */
+    :root { 
+      --bg-start: #f3f4f6; 
+      --bg-end: #e0e7ff; 
+      --bg-mid: #dbeafe; 
+      --card-bg: rgba(255, 255, 255, 0.45); 
+      --card-border: rgba(255, 255, 255, 0.7); 
+      --card-shadow: rgba(0, 0, 0, 0.05); 
+      --text-primary: #111827; 
+      --text-secondary: #4b5563; 
+      --accent-primary: #4f46e5; 
+      --accent-primary-hover: #4338ca; 
+      --accent-success: #16a34a; 
+      --accent-record: #dc2626; 
+      --accent-pause: #f59e0b; 
+    }
+    body { 
+      background: linear-gradient(-45deg, var(--bg-start), var(--bg-mid), var(--bg-end), var(--bg-mid)); 
+      background-size: 400% 400%; 
+      animation: gradientBG 25s ease infinite; 
+      color: var(--text-primary); 
+      padding-bottom: 80px; /* Espace pour la barre de progression flottante */
+      font-family: Inter, sans-serif; 
+    }
+    @keyframes gradientBG { 
+      0% { background-position: 0% 50%; } 
+      50% { background-position: 100% 50%; } 
+      100% { background-position: 0% 50%; } 
+    }
+    .glass-bubble { 
+      background-color: var(--card-bg); 
+      backdrop-filter: blur(24px); 
+      -webkit-backdrop-filter: blur(24px); 
+      border: 1px solid var(--card-border); 
+      box-shadow: 0 8px 32px 0 var(--card-shadow); 
+      transition: all 0.3s ease; 
+      border-radius: 1rem; 
+    }
+    .form-input { 
+      background-color: rgba(255, 255, 255, 0.6); 
+      border: 1px solid rgba(209, 213, 219, 0.8); 
+      color: var(--text-primary); 
+      border-radius: 0.5rem; 
+    }
+    .form-input:focus { 
+      background-color: rgba(255, 255, 255, 0.9); 
+      border-color: var(--accent-primary); 
+      box-shadow: 0 0 0 2px var(--accent-primary); 
+      outline: none; 
+    }
+    .btn-disabled { 
+      opacity: 0.5; 
+      cursor: not-allowed; 
+    }
+    #floatingProgress { 
+      background-color: var(--card-bg); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px); 
+      border-top: 1px solid var(--card-border); 
+      transition: opacity 0.3s, transform 0.3s; 
+      z-index: 60; 
+      border-top-left-radius: 1rem; 
+      border-top-right-radius: 1rem;
+    }
+    .progress-bar-inner { 
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-success)); 
+      background-size: 200% 100%; 
+      animation: progress-active 2s ease-in-out infinite; 
+      transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+      border-radius: 9999px;
+    }
+    @keyframes progress-active { 
+      0% { background-position: 100% 0; } 
+      100% { background-position: -100% 0; } 
+    }
+    .hidden { 
+      display: none; 
+    }
+    
+    /* CORRECTION MOBILE: Alignement start pour éviter le crop en haut */
+    #profileModal, #completionModal { 
+      align-items: flex-start; /* Aligne en haut sur mobile */
+      padding-top: 1rem; 
+      padding-bottom: 1rem; 
+    }
+    
+    @media (min-width: 640px) { 
+      /* Centre sur desktop */
+      #profileModal, #completionModal { 
+        align-items: center; 
+      } 
+    }
+    
+    /* CORRECTION MOBILE: Assure le défilement et la hauteur max */
+    #profileModal .glass-bubble, #completionModal .glass-bubble { 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; /* Défilement fluide sur iOS */
+      max-height: 85vh; /* Hauteur max réduite pour laisser de la marge */
+    }
+    
+    #profileModal form { 
+      overflow-y: visible; 
+      padding-bottom: 0; 
+      flex-grow: 0; 
+    }
+    .modal-footer { 
+      padding-top: 1rem; 
+      text-align: right; 
+    }
+    .modal-footer.flex { 
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-end; 
+      gap: 0.75rem; 
+    }
+    #toasts { 
+      z-index: 70; 
+    }
+    @keyframes spin { 
+      to { transform: rotate(360deg); } 
+    }
+    .animate-spin { 
+      animation: spin 1s linear infinite; 
+    }
     .border-b-2 { border-bottom-width: 2px; }
     .border-indigo-600 { border-color: #4f46e5; }
     .h-5 { height: 1.25rem; } .w-5 { width: 1.25rem; }
-    .btn { padding-left: 1.25rem; padding-right: 1.25rem; padding-top: 0.5rem; padding-bottom: 0.5rem; font-weight: 600; border-radius: 9999px; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 200ms; outline: 2px solid transparent; outline-offset: 2px; }
-    .btn:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-primary); }
-    .btn-primary { background-color: var(--accent-primary); color: white; } .btn-primary:hover { background-color: var(--accent-primary-hover); } .btn-primary:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-primary); }
-    .btn-secondary { background-color: white; color: var(--accent-primary); border: 1px solid #e5e7eb; } .btn-secondary:hover { background-color: #f9fafb; } .btn-secondary:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-primary); }
-    .btn-record { background-color: var(--accent-record); color: white; } .btn-record:hover { background-color: #b91c1c; } .btn-record:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-record); }
-    .btn-pause { background-color: var(--accent-pause); color: white; } .btn-pause:hover { background-color: #d97706; } .btn-pause:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-pause); }
+    .btn { 
+      padding-left: 1.25rem; 
+      padding-right: 1.25rem; 
+      padding-top: 0.5rem; 
+      padding-bottom: 0.5rem; 
+      font-weight: 600; 
+      border-radius: 9999px; 
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+      transition-property: all; 
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+      transition-duration: 200ms; 
+      outline: 2px solid transparent; 
+      outline-offset: 2px; 
+    }
+    .btn:focus-visible { 
+      box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-primary); 
+    }
+    .btn-primary { background-color: var(--accent-primary); color: white; } 
+    .btn-primary:hover { background-color: var(--accent-primary-hover); } 
+    .btn-primary:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-primary); }
+    .btn-secondary { background-color: white; color: var(--accent-primary); border: 1px solid #e5e7eb; } 
+    .btn-secondary:hover { background-color: #f9fafb; } 
+    .btn-secondary:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-primary); }
+    .btn-record { background-color: var(--accent-record); color: white; } 
+    .btn-record:hover { background-color: #b91c1c; } 
+    .btn-record:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-record); }
+    .btn-pause { background-color: var(--accent-pause); color: white; } 
+    .btn-pause:hover { background-color: #d97706; } 
+    .btn-pause:focus-visible { box-shadow: 0 0 0 2px var(--card-border), 0 0 0 4px var(--accent-pause); }
     .btn-sm { padding-left: 0.75rem; padding-right: 0.75rem; padding-top: 0.25rem; padding-bottom: 0.25rem; font-size: 0.875rem; }
     .btn-icon { padding: 0.5rem; }
   </style>
 </head>
 <body class="min-h-screen antialiased">
 
+  <!-- En-tête -->
   <header class="max-w-5xl mx-auto px-4 pt-6 pb-3 flex items-center justify-between gap-3">
       <div class="flex items-center gap-3">
           <img id="brandLogo" src="https://placehold.co/120x40/f0f0f0/333?text=Logo" alt="Logo" class="h-10 w-auto">
@@ -88,12 +217,14 @@
       </button>
   </header>
 
+  <!-- Contenu principal (Cartes) -->
   <main id="mainContent" class="max-w-5xl mx-auto p-4 space-y-6 opacity-0 transition-opacity duration-500">
       <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <!-- Les cartes de questions seront injectées ici -->
+          <!-- Les cartes de questions seront injectées ici par le JS -->
       </div>
   </main>
 
+  <!-- Barre de progression flottante -->
   <div id="floatingProgress" class="fixed bottom-0 left-0 right-0 p-4 shadow-lg">
       <div class="max-w-5xl mx-auto">
           <div class="flex items-center justify-between mb-1">
@@ -106,17 +237,63 @@
       </div>
   </div>
 
+  <!-- Conteneur pour les notifications (Toasts) -->
   <div id="toasts" aria-live="polite" class="fixed top-5 right-5 z-50 w-full max-w-xs space-y-3"></div>
 
-  <!-- MODALE PROFIL -->
+  <!-- MODALE PROFIL (CORRIGÉE POUR MOBILE & CLARTÉ) -->
    <div id="profileModal" class="fixed inset-0 z-40 flex items-start sm:items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
      <div class="fixed inset-0 bg-gray-900/30 backdrop-blur-sm" aria-hidden="true"></div>
-     <div class="glass-bubble relative w-full max-w-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
-       <h2 id="profileModalTitle" class="text-2xl font-bold text-gray-900 mb-2">Vos informations</h2>
-       <p class="text-sm text-gray-600 mb-6">Pour personnaliser les questions.</p>
+     
+     <!-- CORRECTION: pb-24 pour laisser de l'espace en bas pour le scroll mobile, max-h-[85vh] pour ne pas déborder -->
+     <div class="glass-bubble relative w-full max-w-2xl p-6 sm:p-8 max-h-[85vh] overflow-y-auto pb-24">
+       <h2 id="profileModalTitle" class="text-2xl font-bold text-gray-900 mb-2">Commençons !</h2>
+       <p class="text-sm text-gray-600 mb-6">Quelques infos pour adapter les questions.</p>
+       
        <form id="metaForm" class="space-y-5" novalidate>
-         <fieldset class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <div> <label for="studentCode" class="block text-sm font-medium">Identifiant</label> <input id="studentCode" name="studentCode" placeholder="ID_Exemple" class="form-input mt-1 w-full px-3 py-2" required maxlength="32" inputmode="text" pattern="[A-Za-z0-9_\-]+"> <p class="mt-1 text-xs text-gray-500">Ex: ID étudiant, pseudo...</p> </div> <div> <label for="cohort" class="block text-sm font-medium">Contexte</label> <input id="cohort" name="cohort" placeholder="Ex : M2 Info, Projet Y..." class="form-input mt-1 w-full px-3 py-2" required> <p class="mt-1 text-xs text-gray-500">Promo, entreprise, établissement...</p> </div> <div> <label for="profile" class="block text-sm font-medium">Profil</label> <select id="profile" name="profile" class="form-input mt-1 w-full px-3 py-2 appearance-none"> <option value="etudiant" selected>Étudiant</option> <option value="enseignant">Enseignant</option> <option value="autre">Autre</option> </select> </div> <div> <label for="used" class="block text-sm font-medium">Usage du Projet</label> <select id="used" name="used" class="form-input mt-1 w-full px-3 py-2 appearance-none"> <option value="TestProjet">Test du projet</option> <option value="Inspiration">Inspiration code</option> <option value="Autre">Autre</option> </select> </div> </fieldset>
-         <fieldset class="space-y-3 pt-2"> <legend class="text-sm font-medium">Consentement</legend> <label class="flex items-start gap-3 p-3 rounded-lg bg-white/50 border border-white/80 cursor-pointer"> <input id="consent" type="checkbox" class="mt-1 h-5 w-5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300"> <span class="text-sm text-gray-700">J’accepte le stockage (audio + transcript) et l’usage anonymisé de ces données. Suppression possible sur demande.</span> </label> </fieldset>
+         <fieldset class="grid grid-cols-1 sm:grid-cols-2 gap-4"> 
+             
+            <!-- CORRECTION: Labels clarifiés -->
+            <div> 
+                <label for="studentCode" class="block text-sm font-medium">Votre Nom ou Pseudo</label> 
+                <input id="studentCode" name="studentCode" placeholder="Ex: Jean, Alice34..." class="form-input mt-1 w-full px-3 py-2" required maxlength="32" inputmode="text" pattern="[A-Za-z0-9_\-]+"> 
+                <p class="mt-1 text-xs text-gray-500">Pour vous identifier (Lettres, chiffres).</p> 
+            </div> 
+            
+            <div> 
+                <label for="cohort" class="block text-sm font-medium">Organisation / Classe</label> 
+                <input id="cohort" name="cohort" placeholder="Ex : M2 Info, Startup X, Projet Perso..." class="form-input mt-1 w-full px-3 py-2" required> 
+                <p class="mt-1 text-xs text-gray-500">Le contexte de votre projet.</p> 
+            </div> 
+            
+            <div> 
+                <label for="profile" class="block text-sm font-medium">Votre Profil</label> 
+                <select id="profile" name="profile" class="form-input mt-1 w-full px-3 py-2 appearance-none"> 
+                    <option value="etudiant" selected>Étudiant</option> 
+                    <option value="entrepreneur">Entrepreneur</option> 
+                    <option value="freelance">Freelance</option> 
+                    <option value="enseignant">Enseignant</option> 
+                    <option value="autre">Autre</option> 
+                </select> 
+            </div> 
+            
+            <div> 
+                <label for="used" class="block text-sm font-medium">Usage de CHOPS</label> 
+                <select id="used" name="used" class="form-input mt-1 w-full px-3 py-2 appearance-none"> 
+                    <option value="CHOPS_only">CHOPS (méthode)</option> 
+                    <option value="CHOPS_plus_CHOPi">CHOPS + CHOPi (outil IA)</option> 
+                    <option value="none">Aucun des deux</option> 
+                </select> 
+            </div> 
+         </fieldset>
+         
+         <fieldset class="space-y-3 pt-2"> 
+             <legend class="text-sm font-medium">Consentement</legend> 
+             <!-- CORRECTION: Texte de consentement simplifié -->
+             <label class="flex items-start gap-3 p-3 rounded-lg bg-white/50 border border-white/80 cursor-pointer"> 
+                 <input id="consent" type="checkbox" class="mt-1 h-5 w-5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300"> 
+                 <span class="text-sm text-gray-700">J’accepte le stockage de ces réponses audio à des fins d'amélioration.</span> 
+             </label> 
+         </fieldset>
 
          <div class="modal-footer flex">
              <div id="profileSpinner" class="hidden animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>
@@ -132,10 +309,17 @@
   <div id="recordModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="fixed inset-0 bg-gray-900/30 backdrop-blur-sm" aria-hidden="true"></div>
     <div class="glass-bubble relative w-full max-w-xl shadow-xl">
+      <!-- En-tête de la modale -->
       <div class="flex items-start justify-between p-4 border-b border-white/50">
-          <div> <p id="modalTheme" class="text-xs uppercase tracking-wide font-semibold text-indigo-700"></p> <h3 id="modalTitle" class="text-lg font-semibold text-gray-900"></h3> </div>
-          <button id="modalClose" class="btn btn-secondary btn-icon" aria-label="Fermer"> <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg> </button>
+          <div> 
+            <p id="modalTheme" class="text-xs uppercase tracking-wide font-semibold text-indigo-700"></p> 
+            <h3 id="modalTitle" class="text-lg font-semibold text-gray-900"></h3> 
+          </div>
+          <button id="modalClose" class="btn btn-secondary btn-icon" aria-label="Fermer"> 
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg> 
+          </button>
       </div>
+      <!-- Corps de la modale (Contrôles) -->
       <div class="p-4 sm:p-6 space-y-5">
           <div id="controlsWrap" class="flex flex-col sm:flex-row items-center gap-3">
               <button id="btnRecord" type="button" class="btn btn-record w-full sm:w-auto"> <span class="flex items-center justify-center gap-2"> <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" /><path d="M5.5 8.5a.5.5 0 011 0V10a2 2 0 104 0V8.5a.5.5 0 011 0v1.5a3 3 0 11-6 0V8.5z" /><path d="M9 14a1 1 0 001 1h0a1 1 0 001-1v-1a1 1 0 00-1-1h0a1 1 0 00-1 1v1z" /></svg> Enregistrer </span> </button>
@@ -144,12 +328,14 @@
               <button id="btnStop" type="button" class="btn btn-secondary w-full sm:w-auto hidden" disabled> <span class="flex items-center justify-center gap-2"> <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 3.5A1.5 1.5 0 016.5 2h7A1.5 1.5 0 0115 3.5v7a1.5 1.5 0 01-1.5 1.5h-7A1.5 1.5 0 015 10.5v-7z" clip-rule="evenodd" /></svg> Stop </span> </button>
               <div class="flex-1 w-full pt-2 sm:pt-0"> <div class="h-2 rounded-full bg-white/60 overflow-hidden"><div id="meter" class="h-2 bg-green-500 transition-all duration-75 rounded-full" style="width:0%"></div></div> <p id="timerWrap" class="mt-1 text-xs text-gray-600 text-right"><span id="timer">00:00</span> / 00:00</p> </div>
           </div>
+          <!-- Prévisualisation Audio -->
           <div id="previewWrap" class="hidden space-y-4">
               <button id="btnReRecord" type="button" class="btn btn-secondary btn-sm"> ↺ Réenregistrer </button>
               <audio id="player" controls controlsList="nodownload noplaybackrate" class="w-full rounded-full"></audio>
               <p id="fileInfo" class="mt-1 text-xs text-gray-500"></p>
           </div>
       </div>
+      <!-- Pied de modale (Envoi) -->
       <div class="p-4 border-t border-white/50 flex items-center justify-between">
           <p class="text-xs text-gray-500">État : <span id="status">Prêt</span></p>
           <button id="btnSend" class="btn btn-primary btn-disabled" disabled> Envoyer cette réponse </button>
@@ -160,13 +346,14 @@
   <!-- MODALE DE FÉLICITATIONS -->
   <div id="completionModal" class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="completionModalTitle">
     <div class="fixed inset-0 bg-gray-900/30 backdrop-blur-sm" aria-hidden="true"></div>
-    <div class="glass-bubble relative w-full max-w-lg p-6 sm:p-8 max-h-[90vh] overflow-y-auto text-center">
+    <!-- CORRECTION: pb-20 pour le scroll mobile -->
+    <div class="glass-bubble relative w-full max-w-lg p-6 sm:p-8 max-h-[90vh] overflow-y-auto text-center pb-20">
       <h2 id="completionModalTitle" class="text-3xl font-bold text-gray-900 mb-3">🎉 Félicitations !</h2>
       <p class="text-base text-gray-700 mb-6">
         Vous avez complété tous les feedbacks. Merci infiniment pour votre contribution précieuse !
       </p>
       
-      <!-- Bandeau Email -->
+      <!-- Bandeau Email (Optionnel) -->
       <div class="p-4 rounded-lg bg-white/50 border border-white/80 text-left space-y-2">
          <label for="userEmail" class="block text-sm font-medium text-gray-800">Laissez-nous votre email pour un suivi (optionnel) :</label>
          <form id="emailForm" class="flex flex-col sm:flex-row gap-2">
@@ -179,7 +366,7 @@
          <p id="emailStatus" class="text-xs text-gray-600 mt-1"></p>
       </div>
       
-      <!-- Footer -->
+      <!-- Footer de la modale de fin -->
       <div class="modal-footer">
           <button id="modalCompleteClose" class="btn btn-primary">
             Terminer
@@ -190,6 +377,10 @@
 
 
   <script>
+    // ===================================================================================
+    // ============================= INITIALISATION ET CONFIG ==========================
+    // ===================================================================================
+
     // Configuration globale chargée depuis le <head>
     const CONFIG = window.APP_CONFIG || {};
 
@@ -200,7 +391,7 @@
     // Limite des notifications
     const MAX_TOASTS = 4;
     
-    // Contexte Audio pour le son
+    // Contexte Audio pour le son (démarré sur interaction)
     let audioCtx;
     function playSuccessSound() {
         try {
@@ -212,13 +403,17 @@
             }
             const oscillator = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
+
             oscillator.connect(gainNode);
             gainNode.connect(audioCtx.destination);
+
             oscillator.type = 'sine';
             gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 0.05);
+            gainNode.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 0.05); // Moins fort
+
             oscillator.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
             oscillator.frequency.linearRampToValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+
             oscillator.start(audioCtx.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.5);
             oscillator.stop(audioCtx.currentTime + 0.5);
@@ -235,24 +430,34 @@
     function toast(msg, type = 'info', duration = 3500) {
       const w = $('#toasts');
       if (!w) return;
+      
+      // Gérer la limite
       while (w.children.length >= MAX_TOASTS) {
         const oldToast = w.firstElementChild;
-        if (oldToast) { oldToast.remove(); }
+        if (oldToast) {
+          oldToast.remove(); // Supprime le plus ancien
+        }
       }
+
       const d = document.createElement('div');
-      let c = 'bg-gray-700'; 
+      let c = 'bg-gray-700'; // info
       if (type === 'ok') c = 'bg-green-600';
       if (type === 'warn') c = 'bg-amber-500';
       if (type === 'err') c = 'bg-red-600';
+      
       d.className = `${c} text-white rounded-xl px-4 py-3 mb-2 shadow-lg text-sm font-medium transition-all duration-300 transform translate-x-full opacity-0`;
       d.textContent = msg;
       w.appendChild(d);
+      
+      // Animation d'apparition
       requestAnimationFrame(() => {
           requestAnimationFrame(() => {
               d.classList.remove('translate-x-full', 'opacity-0');
               d.classList.add('translate-x-0', 'opacity-100');
           });
       });
+
+      // Disparition
       setTimeout(() => {
         d.classList.add('translate-x-full', 'opacity-0');
         d.addEventListener('transitionend', () => d.remove(), { once: true });
@@ -262,23 +467,28 @@
     /* =================================================================================== */
     /* ============================= GESTION DU LOCAL STORAGE ========================== */
     /* =================================================================================== */
+
     const LS_KEYS = {
       META: 'chops_voiceform_meta',
       STATUS_PREFIX: 'chops_voiceform_status_'
     };
+
     function saveMeta(meta) {
       try { localStorage.setItem(LS_KEYS.META, JSON.stringify(meta)); } 
       catch (e) { console.error("Erreur sauvegarde localStorage (meta):", e); toast("Impossible de sauvegarder le profil.", "err"); }
     }
+    
     function loadMeta() {
       try { return JSON.parse(localStorage.getItem(LS_KEYS.META) || '{}'); } 
       catch (e) { console.error("Erreur chargement localStorage (meta):", e); return {}; }
     }
+
     function saveStatus(studentId, status) {
       if (!studentId) return;
       try { localStorage.setItem(LS_KEYS.STATUS_PREFIX + studentId, JSON.stringify(status)); } 
       catch (e) { console.error("Erreur sauvegarde localStorage (status):", e); toast("Impossible de sauvegarder la progression.", "err"); }
     }
+
     function loadStatus(studentId) {
       if (!studentId) return {};
       try { return JSON.parse(localStorage.getItem(LS_KEYS.STATUS_PREFIX + studentId) || '{}'); } 
@@ -299,14 +509,18 @@
       const editProfileBtn = $('#editProfileBtn');
       const mainContent = $('#mainContent');
       const cardsGrid = $('#cardsGrid');
+      
       const recordModal = $('#recordModal');
       const modalClose = $('#modalClose');
       const statusEl = $('#status');
+      
       const floatingProgress = $('#floatingProgress');
       const progressText = $('#progressText');
       const progressPct = $('#progressPct');
       const progressBar = $('#progressBar');
       const profileSpinner = $('#profileSpinner'); 
+      
+      // Sélecteurs Modale Complétion
       const completionModal = $('#completionModal');
       const modalCompleteClose = $('#modalCompleteClose');
       const emailForm = $('#emailForm');
@@ -316,13 +530,15 @@
       const emailSpinner = $('#emailSpinner');
       const submitEmailText = $('#submitEmailText');
       
-      // --- Vérification de l'UI ---
+      
+      // Vérification que tous les éléments UI existent
       if (!profileModal || !metaForm || !saveProfileBtn || !editProfileBtn || !mainContent || !cardsGrid || 
           !recordModal || !modalClose || !statusEl || !floatingProgress || !progressText || !progressPct || 
           !progressBar || !profileSpinner || !completionModal || !modalCompleteClose || !emailForm || 
           !submitEmailBtn || !userEmail || !emailStatus || !emailSpinner || !submitEmailText) {
+          
           console.error("Éléments UI principaux manquants ! Vérifiez les IDs dans le HTML.");
-          toast("Erreur critique: Interface incomplète.", "err");
+          toast("Erreur critique: Interface incomplète.", "err", 10000);
           return;
       }
 
@@ -331,8 +547,8 @@
       let currentStatus = {};
       let topics = [];
       let currentTopic = null;
-      let lastTrigger = null;
-      let sendingDebounce = false; 
+      let lastTrigger = null; // Pour le focus au retour
+      let sendingDebounce = false; // Anti-double-clic sur "Envoyer"
       let currentAnimatedPct = 0;
       let isSubmittingProfile = false;
 
@@ -344,16 +560,25 @@
         if (brandTitleEl) brandTitleEl.textContent = brandTitleText;
         if ($('#brandLogo')) $('#brandLogo').src = CONFIG.BRAND.LOGO_URL;
         if ($('#favicon')) $('#favicon').href = CONFIG.BRAND.FAVICON_URL;
-      } catch (e) { console.error("Erreur configuration Branding:", e); }
+      } catch (e) {
+          console.error("Erreur configuration Branding:", e);
+      }
 
-      // --- FONCTION hhmmss ---
-      function hhmmss(s) { const sec = Math.max(0, Math.floor(s)); return `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`; }
+      // --- Utilitaire: Formatage du temps ---
+      function hhmmss(s) {
+        const sec = Math.max(0, Math.floor(s));
+        return `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
+      }
+      
+      // Initialiser le timer max dans l'UI (modale)
       if ($('#timerWrap')) $('#timerWrap').textContent = `00:00 / ${hhmmss(CONFIG.LIMITS.MAX_SECONDS)}`;
+
 
       // --- Initialisation du profil ---
       function initProfile() {
         console.log("Initialisation du profil...");
         const meta = loadMeta();
+        // Vérifie si l'ID de dossier est présent (requis)
         if (meta && meta.studentCode && meta.cohort && meta.profile && meta.used && meta.consent === true && meta.userFolderDriveId) {
           console.log("Profil valide (avec ID dossier) trouvé:", meta);
           currentMeta = meta;
@@ -362,6 +587,7 @@
           $('#profile').value = meta.profile;
           $('#used').value = meta.used;
           $('#consent').checked = meta.consent;
+          
           profileModal.classList.add('hidden');
           mainContent.classList.remove('opacity-0');
           editProfileBtn.classList.remove('hidden');
@@ -380,46 +606,64 @@
       metaForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (isSubmittingProfile) return;
+        
         isSubmittingProfile = true;
         saveProfileBtn.disabled = true;
         saveProfileBtn.classList.add('btn-disabled');
         profileSpinner.classList.remove('hidden');
+        
         const studentCode = $('#studentCode').value.trim();
         const cohort = $('#cohort').value.trim();
         const consent = $('#consent').checked;
         const profile = $('#profile').value;
         const used = $('#used').value;
+
+        // Validation des champs
         if (!/^[A-Za-z0-9_\-]{1,32}$/.test(studentCode)) {
-           toast('Identifiant invalide (lettres, chiffres, _, -).', 'warn');
+           toast('Nom/Pseudo invalide (lettres, chiffres, _, -).', 'warn');
            isSubmittingProfile = false; saveProfileBtn.disabled = false; saveProfileBtn.classList.remove('btn-disabled'); profileSpinner.classList.add('hidden'); return;
         }
          if (cohort.length < 1) {
-           toast('Contexte requis.', 'warn');
+           toast('Organisation/Classe requise.', 'warn');
            isSubmittingProfile = false; saveProfileBtn.disabled = false; saveProfileBtn.classList.remove('btn-disabled'); profileSpinner.classList.add('hidden'); return;
          }
         if (!consent) {
            toast('Consentement requis.', 'warn');
            isSubmittingProfile = false; saveProfileBtn.disabled = false; saveProfileBtn.classList.remove('btn-disabled'); profileSpinner.classList.add('hidden'); return;
         }
+        
+        // 1. Sauvegarde locale (provisoire, sans ID dossier)
         currentMeta = { studentCode, cohort, profile, used, consent: true };
+        
         try {
+          // 2. Appel au backend pour créer/récupérer dossier
           console.log('Appel ensureUserFolder...');
           const folderPayload = { action: "ensureUserFolder", studentCode, cohort, profile, used };
           const folderJson = await fetchGAS(CONFIG.WEBAPP_URL, folderPayload);
-          if (folderJson.ok === false) { throw new Error(folderJson.error || 'Erreur création dossier.'); }
-          if (!folderJson.userFolderDriveId) { throw new Error("Réponse backend invalide (ID dossier manquant)."); }
+          
+          if (folderJson.ok === false) {
+            throw new Error(folderJson.error || 'Erreur création dossier.');
+          }
+          if (!folderJson.userFolderDriveId) {
+            throw new Error("Réponse backend invalide (ID dossier manquant).");
+          }
+          
+          // 3. Succès : Sauvegarde finale avec l'ID dossier
           currentMeta.userFolderDriveId = folderJson.userFolderDriveId;
-          saveMeta(currentMeta); 
-          currentStatus = loadStatus(currentMeta.studentCode); 
+          saveMeta(currentMeta); // Sauvegarde complète
+          currentStatus = loadStatus(currentMeta.studentCode); // Charge le statut pour ce code
           console.log(`Dossier Drive OK. ID sauvegardé: ${currentMeta.userFolderDriveId}`);
+          
           profileModal.classList.add('hidden');
           renderAllCards();
           mainContent.classList.remove('opacity-0');
           editProfileBtn.classList.remove('hidden');
           toast('Profil enregistré !', 'ok');
+          
         } catch (folderErr) {
           console.error('Erreur ensureUserFolder:', folderErr);
           toast(`Erreur config Drive : ${folderErr.message}.`, 'err');
+          // Ne cache pas la modale, l'utilisateur doit pouvoir réessayer
         } finally {
           isSubmittingProfile = false;
           saveProfileBtn.disabled = false;
@@ -428,17 +672,19 @@
         }
       });
 
-      // --- Bouton editProfile ---
+      // --- Bouton "Modifier le profil" ---
       if (editProfileBtn) {
           editProfileBtn.addEventListener('click', () => {
+            // Force la re-saisie pour recréer/vérifier l'ID dossier
             profileModal.classList.remove('hidden');
           });
       }
       
-      // --- Listeners pour la modale de complétion ---
+      // --- Listeners pour la modale de complétion (Email + Fermer) ---
       if(modalCompleteClose) {
           modalCompleteClose.addEventListener('click', () => {
               completionModal.classList.add('hidden');
+              // Réinitialiser le formulaire email
               if (userEmail) userEmail.value = '';
               if (emailStatus) emailStatus.textContent = '';
               if (userEmail) userEmail.disabled = false;
@@ -453,85 +699,112 @@
           emailForm.addEventListener('submit', async (e) => {
               e.preventDefault();
               const email = userEmail.value.trim();
+              
               if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                   emailStatus.textContent = "Veuillez entrer un email valide.";
                   emailStatus.className = "text-xs text-red-600 mt-1";
                   return;
               }
+
+              // Début de l'envoi
               submitEmailBtn.disabled = true;
               submitEmailBtn.classList.add('btn-disabled');
               emailSpinner.classList.remove('hidden');
               submitEmailText.textContent = "Envoi...";
               emailStatus.textContent = "";
+
               try {
-                  const payload = { action: "saveEmail", email: email, studentCode: currentMeta.studentCode || 'inconnu' };
+                  const payload = {
+                      action: "saveEmail",
+                      email: email,
+                      studentCode: currentMeta.studentCode || 'inconnu'
+                  };
+                  
                   const response = await fetchGAS(CONFIG.WEBAPP_URL, payload);
-                  if (response.ok === false) { throw new Error(response.error || "Erreur inconnue"); }
+                  
+                  if (response.ok === false) {
+                      throw new Error(response.error || "Erreur inconnue");
+                  }
+                  
+                  // Succès
                   emailStatus.textContent = "Merci ! Votre email est enregistré.";
                   emailStatus.className = "text-xs text-green-700 mt-1";
-                  userEmail.disabled = true;
+                  userEmail.disabled = true; // Bloquer le formulaire après succès
+
               } catch (err) {
+                  // Erreur
                   console.error("Erreur sauvegarde email:", err);
                   emailStatus.textContent = `Erreur : ${err.message}`;
                   emailStatus.className = "text-xs text-red-600 mt-1";
                   submitEmailBtn.disabled = false;
                   submitEmailBtn.classList.remove('btn-disabled');
               } finally {
+                  // Fin de l'envoi
                   emailSpinner.classList.add('hidden');
-                  if (!userEmail.disabled) { submitEmailText.textContent = "Envoyer"; } 
-                  else { submitEmailText.textContent = "Envoyé"; }
+                  if (!userEmail.disabled) { // Si pas de succès
+                     submitEmailText.textContent = "Envoyer";
+                  } else {
+                     submitEmailText.textContent = "Envoyé";
+                  }
               }
           });
       }
 
 
-      // --- Rendu des cartes et progression ---
+      // --- Rendu des cartes et gestion de la progression ---
       function getQuestion(profile, topic) {
         try {
            let effectiveProfile = profile || 'autre';
-           // Adapte les profils si 'entrepreneur' ou 'freelance' ne sont pas dans QUESTIONS
-           if (!CONFIG.QUESTIONS.hasOwnProperty(effectiveProfile)) {
-               effectiveProfile = 'autre';
-           }
            let questions = CONFIG.QUESTIONS[effectiveProfile];
+           // Fallback vers 'autre' si le profil n'existe pas ou n'a pas la question
            if (!questions || !questions.hasOwnProperty(topic)) {
                effectiveProfile = 'autre';
                questions = CONFIG.QUESTIONS['autre'];
            }
-           if (!questions || !questions.hasOwnProperty(topic)) { return "[Question manquante]"; }
+           if (!questions || !questions.hasOwnProperty(topic)) {
+               return "[Question manquante]";
+           }
            return questions[topic];
-        } catch (e) { console.error(`Erreur getQuestion(${profile}, ${topic})`, e); return "[Erreur question]"; }
+        } catch (e) {
+          console.error(`Erreur getQuestion(${profile}, ${topic})`, e);
+          return "[Erreur question]";
+        }
       }
       
+      // Fonction principale pour afficher/mettre à jour les cartes
       function renderAllCards() {
         let effectiveProfile = currentMeta.profile || 'autre';
-        // Adapte les profils si 'entrepreneur' ou 'freelance' ne sont pas dans QUESTIONS
-        if (!CONFIG.QUESTIONS.hasOwnProperty(effectiveProfile)) {
-            effectiveProfile = 'autre';
-        }
         let profileQuestions = CONFIG.QUESTIONS[effectiveProfile];
 
+        // Fallback si le profil n'existe pas dans la config
         if (!profileQuestions || typeof profileQuestions !== 'object') {
             effectiveProfile = 'autre';
             profileQuestions = CONFIG.QUESTIONS['autre'];
         }
+        
+        // Si même le fallback 'autre' est invalide
         if (!profileQuestions || typeof profileQuestions !== 'object') {
           topics = [];
           if (cardsGrid) cardsGrid.innerHTML = '<p class="text-red-600 text-center col-span-full">Erreur: Configuration des questions invalide.</p>';
           updateProgress(); 
           return;
         }
+
         topics = Object.keys(profileQuestions);
+        
         if (topics.length === 0) {
            if (cardsGrid) cardsGrid.innerHTML = '<p class="text-center col-span-full">Aucune question configurée.</p>';
         } else {
-           if (cardsGrid) cardsGrid.innerHTML = ''; 
+           if (cardsGrid) cardsGrid.innerHTML = ''; // Nettoyer la grille
+           
+           // Créer une carte pour chaque sujet
            topics.forEach(topic => {
              const entry = currentStatus[topic];
              const done = !!entry?.done;
              const sending = !!entry?.sending;
              const failed = !!entry?.failed;
              const questionText = getQuestion(effectiveProfile, topic);
+             
              const card = document.createElement('button');
              card.type = 'button';
              card.dataset.topic = topic;
@@ -539,7 +812,10 @@
                               ${done ? 'opacity-70 hover:opacity-100' : ''} 
                               ${sending ? 'opacity-50 cursor-not-allowed' : ''}
                               ${failed ? 'border-red-400 hover:border-red-500' : ''}`;
-             if (sending) card.disabled = true; 
+             
+             if (sending) card.disabled = true; // Bloquer si envoi en cours
+
+             // Badge de statut
              let statusBadge = '';
              if (sending) {
                  statusBadge = `<span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-xs font-medium flex items-center gap-1">
@@ -556,6 +832,8 @@
              } else {
                  statusBadge = `<span class="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">À faire</span>`;
              }
+             
+             // Contenu HTML de la carte
              card.innerHTML = `
                <div class="flex items-center justify-between">
                  <span class="flex items-center gap-2 text-sm font-semibold text-indigo-700">
@@ -568,6 +846,7 @@
                ${done && entry.at ? `<p class="text-xs text-gray-500 pt-2">Répondu le ${new Date(entry.at).toLocaleDateString()}</p>` : ''}
                ${failed ? `<p class="text-xs text-red-600 pt-2">L'envoi a échoué. Cliquez pour réessayer.</p>` : ''}
              `;
+             
              card.addEventListener('click', () => openModal(topic, card));
              if (cardsGrid) cardsGrid.appendChild(card);
            });
@@ -575,17 +854,21 @@
         updateProgress();
       }
 
+      // Mise à jour de la barre de progression
       function updateProgress() {
         const validTopics = Array.isArray(topics) ? topics : []; 
         const done = validTopics.filter(t => !!currentStatus[t]?.done).length;
         const total = validTopics.length; 
         const pct = (total > 0) ? Math.round((done / total) * 100) : 0;
+        
         if (progressText) progressText.textContent = `${done}/${total} complétées`;
+        // Animer le compteur de pourcentage
         animateCounter(progressPct, currentAnimatedPct, pct, '%');
         currentAnimatedPct = pct;
         if (progressBar) progressBar.style.width = `${pct}%`;
       }
       
+      // Animation du compteur (pour le %)
       function animateCounter(el, from, to, suffix = '') {
          if (!el) return;
         if (from === to) { el.textContent = `${to}${suffix}`; return; }
@@ -596,7 +879,7 @@
         let animationFrameId;
         function step() {
           frame++;
-          const progress = 1 - Math.pow(1 - (frame / totalFrames), 2);
+          const progress = 1 - Math.pow(1 - (frame / totalFrames), 2); // Ease-out
           const currentVal = from + (diff * progress);
           el.textContent = `${Math.round(currentVal)}${suffix}`;
           if (frame < totalFrames) {
@@ -609,10 +892,11 @@
         animationFrameId = requestAnimationFrame(step);
       }
       
-      // ------------------------------------
-      // Logique de la Modale d'Enregistrement
-      // ------------------------------------
+      // ===================================================================================
+      // ======================== LOGIQUE DE LA MODALE D'ENREGISTREMENT ==================
+      // ===================================================================================
       
+      // Sélecteurs locaux à la modale
       const btnRecord = $('#btnRecord');
       const btnPause = $('#btnPause');
       const btnResume = $('#btnResume');
@@ -625,49 +909,82 @@
       const player = $('#player');
       const previewWrap = $('#previewWrap');
       const fileInfo = $('#fileInfo');
+
+      // Variables d'état de l'enregistrement
       let mediaStream, mediaRecorder, audioChunks = [], audioBlob = null, audioUrl = null, mimeType = 'audio/webm';
       let startedAt = 0, pausedAt = 0, totalPausedTime = 0;
       let timerInterval = null;
-      let analyser, dataArray; 
+      let analyser, dataArray; // Pour le visualiseur de volume
       
+      // Ouvre la modale d'enregistrement
       function openModal(topic, trigger) {
         if (currentStatus[topic]?.sending) {
            toast('Envoi en cours pour ce sujet...', 'warn');
            return; 
         }
+
+        // Si échec précédent, on réinitialise en cliquant
         if (currentStatus[topic]?.failed) {
             delete currentStatus[topic].failed;
             renderAllCards(); 
         }
+
+        // Vérification finale du profil
         if (!currentMeta.consent || !currentMeta.studentCode || !currentMeta.cohort || !currentMeta.userFolderDriveId) {
            toast('Veuillez valider votre profil.', 'warn');
            profileModal.classList.remove('hidden'); 
            return;
         }
+        
         currentTopic = topic;
-        lastTrigger = trigger || null;
+        lastTrigger = trigger || null; // Sauvegarde le bouton cliqué pour le focus retour
+        
+        // Remplit la modale avec la bonne question
         $('#modalTheme').textContent = topic.charAt(0).toUpperCase() + topic.slice(1);
         $('#modalTitle').textContent = getQuestion(currentMeta.profile, topic);
-        resetRecording(true); 
+        
+        resetRecording(true); // Réinitialise l'état de l'enregistrement
+        
         recordModal.classList.remove('hidden');
-        btnRecord.focus(); 
+        btnRecord.focus(); // Focus sur le bouton d'enregistrement
       }
+
+      // Ferme la modale d'enregistrement
       function closeModal() {
-        if (mediaRecorder && mediaRecorder.state !== 'inactive') { mediaRecorder.stop(); }
-        mediaStream?.getTracks().forEach(track => track.stop());
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+          mediaRecorder.stop();
+        }
+        mediaStream?.getTracks().forEach(track => track.stop()); // Coupe le micro
         recordModal.classList.add('hidden'); 
-        if (lastTrigger) lastTrigger.focus();
+        if (lastTrigger) lastTrigger.focus(); // Redonne le focus à la carte
         currentTopic = null; 
       }
+      
+      // Listeners pour fermer la modale
       if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (recordModal) recordModal.addEventListener('click', (e) => { if (e.target === recordModal) closeModal(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && recordModal && !recordModal.classList.contains('hidden')) { closeModal(); } });
+      if (recordModal) recordModal.addEventListener('click', (e) => {
+        if (e.target === recordModal) closeModal(); // Clic sur le fond
+      });
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && recordModal && !recordModal.classList.contains('hidden')) {
+              closeModal(); // Touche Echap
+          }
+      });
+      
       function setStatus(t) { if (statusEl) statusEl.textContent = t; }
+      
+      // Met à jour l'état du bouton "Envoyer"
       function updateSendState() {
         const canSend = currentMeta.consent && !!audioBlob && !sendingDebounce;
-        if (btnSend) { btnSend.disabled = !canSend; btnSend.classList.toggle('btn-disabled', !canSend); }
+        if (btnSend) {
+            btnSend.disabled = !canSend;
+            btnSend.classList.toggle('btn-disabled', !canSend);
+        }
       }
+
+      // Réinitialise l'interface d'enregistrement
       function resetRecording(inModal = false) {
+        // Arrête tout ce qui est en cours
         mediaStream?.getTracks().forEach(t => t.stop()); mediaStream = null;
         if (mediaRecorder && mediaRecorder.state !== 'inactive') { try { mediaRecorder.stop(); } catch(e) {} }
         mediaRecorder = null;
@@ -675,7 +992,9 @@
         audioChunks = []; audioBlob = null;
         if (audioUrl) { URL.revokeObjectURL(audioUrl); audioUrl = null; }
         startedAt = 0; pausedAt = 0; totalPausedTime = 0;
+        
         if (inModal) {
+          // Réinitialise l'UI de la modale
           if(previewWrap) previewWrap.classList.add('hidden');
           if ($('#controlsWrap')) $('#controlsWrap').classList.remove('hidden');
           const maxTime = hhmmss(CONFIG.LIMITS.MAX_SECONDS);
@@ -693,78 +1012,146 @@
         }
       }
 
-      // --- Logique d'enregistrement ---
+      // --- Logique d'enregistrement audio ---
+      
       if(btnRecord) btnRecord.addEventListener('click', startRecording);
       if(btnPause) btnPause.addEventListener('click', pauseRecording);
       if(btnResume) btnResume.addEventListener('click', resumeRecording);
       if(btnStop) btnStop.addEventListener('click', stopRecording);
       if(btnReRecord) btnReRecord.addEventListener('click', () => resetRecording(true));
+
       async function startRecording() {
         resetRecording(true);
         try {
-          mediaStream = await navigator.mediaDevices.getUserMedia({ audio: { noiseSuppression: true, echoCancellation: true } });
+          // Demande d'accès au micro
+          mediaStream = await navigator.mediaDevices.getUserMedia({ 
+            audio: { noiseSuppression: true, echoCancellation: true } 
+          });
         } catch (err) {
           let errorMsg = 'Erreur: Micro refusé/non trouvé.';
           if (err.name === 'NotAllowedError') errorMsg = 'Autorisation micro requise.';
           else if (err.name === 'NotFoundError') errorMsg = 'Aucun micro trouvé.';
           toast(errorMsg, 'err'); setStatus('Erreur micro'); return;
         }
+
         try {
-          if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-          if (audioCtx.state === 'suspended') { audioCtx.resume().catch(e => {}); }
-          document.addEventListener("visibilitychange", () => { if (!audioCtx || audioCtx.state === 'closed') return; if (document.visibilityState === 'visible') { audioCtx.resume().catch(e => {}); } });
+          // Initialise l'analyseur de volume
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+             audioCtx.resume().catch(e => {}); // Reprend le contexte si suspendu
+          }
+          
+          // Gère le cas où l'audio est suspendu si l'onglet passe en arrière-plan
+          document.addEventListener("visibilitychange", () => {
+            if (!audioCtx || audioCtx.state === 'closed') return;
+            if (document.visibilityState === 'visible') {
+              audioCtx.resume().catch(e => {});
+            }
+          });
+
           analyser = audioCtx.createAnalyser();
           analyser.fftSize = 256; dataArray = new Uint8Array(analyser.frequencyBinCount);
           const source = audioCtx.createMediaStreamSource(mediaStream);
-          source.connect(analyser);
+          source.connect(analyser); // Connecte le micro à l'analyseur
+
+          // Choisit le meilleur format audio supporté
           const preferred = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"];
           mimeType = preferred.find(t => MediaRecorder.isTypeSupported?.(t)) || 'audio/webm';
+          
           mediaRecorder = new MediaRecorder(mediaStream, { mimeType });
+
+          // Collecte des morceaux de données audio
           mediaRecorder.ondataavailable = e => { if (e.data?.size > 0) audioChunks.push(e.data); };
+
+          // Au démarrage de l'enregistrement
           mediaRecorder.onstart = () => {
             startedAt = Date.now(); totalPausedTime = 0;
             setStatus('Enregistrement en cours…'); toast('Enregistrement démarré...');
+            
+            // Met à jour l'UI des boutons
             btnRecord.classList.add('hidden');
             btnPause.classList.remove('hidden');
             btnResume.classList.add('hidden');
             btnStop.classList.remove('hidden');
             btnStop.disabled = false;
+            
+            // Démarre le timer
             if (timerInterval) clearInterval(timerInterval);
             timerInterval = setInterval(() => {
               const elapsedSeconds = (Date.now() - startedAt - totalPausedTime) / 1000;
               const sec = Math.min(CONFIG.LIMITS.MAX_SECONDS, elapsedSeconds);
               const maxTime = hhmmss(CONFIG.LIMITS.MAX_SECONDS);
+              
               if(timerEl) timerEl.textContent = hhmmss(sec);
               if(timerWrap) timerWrap.textContent = `${hhmmss(sec)} / ${maxTime}`;
-              if (sec >= CONFIG.LIMITS.MAX_SECONDS) { stopRecording(); toast(`Temps max (${maxTime}) atteint.`, 'warn'); }
+              
+              // Arrêt automatique si max atteint
+              if (sec >= CONFIG.LIMITS.MAX_SECONDS) {
+                stopRecording(); toast(`Temps max (${maxTime}) atteint.`, 'warn');
+              }
+              
+              // Met à jour la barre de volume (meter)
               if (analyser && dataArray && meterBar) {
                 analyser.getByteTimeDomainData(dataArray); let sum = 0;
                 for (let i = 0; i < dataArray.length; i++) { const v = (dataArray[i] - 128) / 128; sum += v * v; }
                 const rms = Math.sqrt(sum / dataArray.length);
                 meterBar.style.width = Math.min(100, Math.floor(rms * 200)) + "%"; 
               }
-            }, 80);
+            }, 80); // Rafraîchissement rapide
           };
+          
+          // À l'arrêt de l'enregistrement
           mediaRecorder.onstop = () => {
             clearInterval(timerInterval); timerInterval = null;
             if (meterBar) meterBar.style.width = '0%';
+            
+            // Crée le Blob audio final
             audioBlob = new Blob(audioChunks, { type: mimeType });
-            if (audioBlob.size > CONFIG.LIMITS.MAX_BYTES) { toast(`Fichier trop volumineux (> ${Math.round(CONFIG.LIMITS.MAX_BYTES / 1024 / 1024)} Mo).`, 'err'); resetRecording(true); return; }
-            if (audioBlob.size < 1000) { toast('Enregistrement trop court.', 'warn'); resetRecording(true); return; }
+            
+            // Vérifications de taille
+            if (audioBlob.size > CONFIG.LIMITS.MAX_BYTES) {
+              toast(`Fichier trop volumineux (> ${Math.round(CONFIG.LIMITS.MAX_BYTES / 1024 / 1024)} Mo).`, 'err');
+              resetRecording(true); return;
+            }
+            if (audioBlob.size < 1000) { // Moins d'1 Ko
+               toast('Enregistrement trop court.', 'warn');
+               resetRecording(true); return;
+            }
+
+            // Affiche le lecteur audio
             audioUrl = URL.createObjectURL(audioBlob);
             if(player) player.src = audioUrl;
             if(previewWrap) previewWrap.classList.remove('hidden');
             if ($('#controlsWrap')) $('#controlsWrap').classList.add('hidden');
+            
+            // Affiche les infos du fichier
             const durationText = (timerEl ? timerEl.textContent : hhmmss(0));
             if(fileInfo) fileInfo.textContent = `${mimeType}, ${(audioBlob.size / 1024).toFixed(1)} KB, durée: ${durationText}`;
+            
             setStatus('Prêt à l’envoi');
             updateSendState();
-            mediaStream?.getTracks().forEach(t => t.stop()); mediaStream = null;
+            
+            mediaStream?.getTracks().forEach(t => t.stop()); // Coupe le micro
+            mediaStream = null;
           };
-          mediaRecorder.onerror = (event) => { console.error(`Erreur MediaRecorder: ${event.error.name}`, event.error); toast(`Erreur enregistrement: ${event.error.message}`, 'err'); setStatus('Erreur enregistrement'); resetRecording(true); };
-          mediaRecorder.start();
-        } catch (err) { console.error("Erreur init enregistrement:", err); toast("Impossible de démarrer l'enregistrement.", 'err'); setStatus('Erreur init'); resetRecording(true); }
+
+          mediaRecorder.onerror = (event) => {
+              console.error(`Erreur MediaRecorder: ${event.error.name}`, event.error);
+              toast(`Erreur enregistrement: ${event.error.message}`, 'err');
+              setStatus('Erreur enregistrement'); resetRecording(true);
+          };
+          
+          mediaRecorder.start(); // Démarrage effectif
+
+        } catch (err) {
+            console.error("Erreur init enregistrement:", err);
+            toast("Impossible de démarrer l'enregistrement.", 'err');
+            setStatus('Erreur init'); resetRecording(true);
+        }
       }
+      
       function pauseRecording() {
         if (mediaRecorder?.state === 'recording') {
           mediaRecorder.pause(); pausedAt = Date.now();
@@ -773,12 +1160,15 @@
           if(btnPause) btnPause.classList.add('hidden'); if(btnResume) btnResume.classList.remove('hidden');
         }
       }
+      
       function resumeRecording() {
         if (mediaRecorder?.state === 'paused') {
           mediaRecorder.resume();
           totalPausedTime += (Date.now() - pausedAt); pausedAt = 0;
           setStatus('Enregistrement en cours…');
           if(btnPause) btnPause.classList.remove('hidden'); if(btnResume) btnResume.classList.add('hidden');
+          
+          // Relance le timer (copie de la boucle de onstart)
           if (timerInterval) clearInterval(timerInterval);
           timerInterval = setInterval(() => {
             const elapsedSeconds = (Date.now() - startedAt - totalPausedTime) / 1000;
@@ -786,7 +1176,9 @@
             const maxTime = hhmmss(CONFIG.LIMITS.MAX_SECONDS);
             if(timerEl) timerEl.textContent = hhmmss(sec);
             if(timerWrap) timerWrap.textContent = `${hhmmss(sec)} / ${maxTime}`;
+            
             if (sec >= CONFIG.LIMITS.MAX_SECONDS) stopRecording();
+            
             if (analyser && dataArray && meterBar) {
               analyser.getByteTimeDomainData(dataArray); let sum = 0;
               for(let i=0;i<dataArray.length;i++){ const v=(dataArray[i]-128)/128; sum+=v*v; }
@@ -796,9 +1188,12 @@
           }, 80);
         }
       }
+      
       function stopRecording() {
         if (mediaRecorder && (mediaRecorder.state === 'recording' || mediaRecorder.state === 'paused')) {
           mediaRecorder.stop(); toast('Enregistrement arrêté.');
+          
+          // Réinitialise les boutons
           if(btnRecord) btnRecord.classList.remove('hidden');
           if(btnPause) btnPause.classList.add('hidden');
           if(btnResume) btnResume.classList.add('hidden');
@@ -808,98 +1203,160 @@
         }
       }
 
-      // ------------------------------------
-      // Logique d'Envoi et API
-      // ------------------------------------
+      // ===================================================================================
+      // ========================== LOGIQUE D'ENVOI (SUBMIT) =============================
+      // ===================================================================================
+
+      // Fonction utilitaire pour fetch vers Google Apps Script (GAS)
       async function fetchGAS(url, payload) {
-        if (!url || url.startsWith("REMPLACEZ_PAR") || !url.startsWith("https://script.google.com")) {
+        if (!url || !url.startsWith("https://script.google.com")) {
             throw new Error("Backend URL invalide ou non configurée.");
         }
         try {
-          const response = await fetch(url, { method: 'POST', mode: 'cors', credentials: 'omit', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload), redirect: 'follow' });
+          const response = await fetch(url, {
+            method: 'POST', mode: 'cors', credentials: 'omit',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // GAS préfère text/plain pour les JSON stringifiés
+            body: JSON.stringify(payload), redirect: 'follow'
+          });
+          
           if (!response.ok) {
             let errorText = `Erreur réseau: ${response.statusText} (${response.status})`;
-            try { const errJson = await response.json(); if (errJson?.error) errorText = `Erreur backend: ${errJson.error}`; } catch(e) {}
+            try {
+              const errJson = await response.json(); // Tente de lire l'erreur JSON du backend
+              if (errJson?.error) errorText = `Erreur backend: ${errJson.error}`;
+            } catch(e) {}
             throw new Error(errorText);
           }
-          return response.json(); 
-        } catch (err) { console.error("Erreur fetchGAS:", err); throw new Error("Communication serveur échouée."); }
+          return response.json(); // Attend la réponse JSON
+        } catch (err) {
+          console.error("Erreur fetchGAS:", err);
+          throw new Error("Communication serveur échouée.");
+        }
       }
+
+      // Convertit un Blob en chaîne Base64
       function blobToBase64(blob) {
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
           reader.onloadend = () => {
-            try { const base64 = reader.result.split(',')[1]; if (!base64) throw new Error("Conversion Base64 invalide."); resolve(base64); } catch (err) { reject(err); }
+            try {
+              const base64 = reader.result.split(',')[1]; // Récupère juste la data base64
+              if (!base64) throw new Error("Conversion Base64 invalide.");
+              resolve(base64);
+            } catch (err) {
+              reject(err);
+            }
           };
-          reader.onerror = reject; reader.readAsDataURL(blob);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
         });
       }
+
+      // Listener sur le bouton "Envoyer"
       if(btnSend) btnSend.addEventListener('click', submitOne);
+
+      /** Prépare et lance l'envoi de la réponse. */
       async function submitOne() {
-         if (sendingDebounce || !audioBlob) return;
+         if (sendingDebounce || !audioBlob) return; // Sécurité anti-double-clic
+         
          sendingDebounce = true;
          setStatus('Préparation envoi...');
          updateSendState();
+         
          try {
+           // 1. Conversion en Base64 (étape la plus longue côté client)
            const fileBase64 = await blobToBase64(audioBlob); 
            const [mm, ss] = timerEl ? timerEl.textContent.split(':').map(Number) : [0, 0];
            const durationSec = (mm * 60 + ss) || 0;
+           
            const topicToUpdate = currentTopic;
+           
+           // 2. Préparation du payload
            const payload = {
-             action: "uploadAudio", ...currentMeta,
-             topic: topicToUpdate, durationSec: durationSec, mimeType: mimeType,
-             transcription: "[CLIENT_TRANSCRIPTION_DISABLED]",
-             fileBase64: fileBase64, clientUA: navigator.userAgent
+             action: "uploadAudio",
+             ...currentMeta, // Inclut studentCode, cohort, profile, used, userFolderDriveId
+             topic: topicToUpdate,
+             durationSec: durationSec,
+             mimeType: mimeType,
+             transcription: "[CLIENT_TRANSCRIPTION_DISABLED]", // Transcription se fait côté serveur
+             fileBase64: fileBase64,
+             clientUA: navigator.userAgent
            };
+
+           // 3. Mise à jour de l'UI (état "Envoi...")
            currentStatus[topicToUpdate] = { sending: true };
            renderAllCards(); 
            toast('Envoi de votre réponse...');
            closeModal(); 
+           
+           // 4. Lancement de la tâche d'envoi en arrière-plan
            runUploadTask(payload, topicToUpdate, durationSec);
+
          } catch (err) {
            console.error('Erreur préparation submitOne:', err);
            toast(`Erreur préparation : ${err.message}. Réessayez.`, 'err');
            setStatus('Erreur préparation');
-           if (currentTopic) { delete currentStatus[currentTopic].sending; renderAllCards(); }
+           if (currentTopic) {
+             delete currentStatus[currentTopic].sending; // Annule l'état "sending"
+             renderAllCards();
+           }
          } finally {
-           sendingDebounce = false;
-           updateSendState();
+           sendingDebounce = false; // Réactive le bouton
+           updateSendState(); 
          }
       } 
+
+      /** Gère l'envoi effectif et le retour (succès/échec) */
       async function runUploadTask(payload, topic, durationSec) {
           const topicLabel = `"${topic.charAt(0).toUpperCase() + topic.slice(1)}"`;
           console.log(`[BG Task ${topic}] Démarrage envoi...`);
+
           try {
+              // 1. Appel au backend
               const jsonResult = await fetchGAS(CONFIG.WEBAPP_URL, payload);
-              if (jsonResult.ok === false) { throw new Error(jsonResult.error || "Erreur inconnue du backend."); }
+
+              if (jsonResult.ok === false) {
+                  throw new Error(jsonResult.error || "Erreur inconnue du backend.");
+              }
+
+              // 2. SUCCÈS
               console.log(`[BG Task ${topic}] Succès.`);
               currentStatus[topic] = { done: true, at: new Date().toISOString(), durationSec: durationSec };
-              saveStatus(currentMeta.studentCode, currentStatus);
-              renderAllCards(); 
+              saveStatus(currentMeta.studentCode, currentStatus); // Sauvegarde la progression
+              renderAllCards(); // Met à jour la carte
               toast(`Réponse pour ${topicLabel} envoyée !`, 'ok'); 
+
+              // Vérifier si tout est complété
               const validTopics = Array.isArray(topics) ? topics : [];
               const done = validTopics.filter(t => !!currentStatus[t]?.done).length;
               const total = validTopics.length;
+
               if (total > 0 && done === total) {
-                setTimeout(() => { showCompletionModal(); }, 1000); 
+                setTimeout(() => {
+                  showCompletionModal(); // Affiche la modale de fin
+                }, 1000); // Léger délai pour apprécier
               }
+
           } catch (err) {
+              // 3. ÉCHEC
               console.error(`[BG Task ${topic}] Échec:`, err);
-              currentStatus[topic] = { failed: true }; 
+              currentStatus[topic] = { failed: true }; // Marque la carte comme "échec"
               saveStatus(currentMeta.studentCode, currentStatus); 
               renderAllCards(); 
               toast(`Erreur pour ${topicLabel}: ${err.message}`, 'err');
           }
       }
       
+      // Affiche la modale de fin
       function showCompletionModal() {
-          playSuccessSound();
+          playSuccessSound(); // Joue un son de succès
           completionModal.classList.remove('hidden');
           modalCompleteClose.focus();
       }
       
-      // --- Démarrage ---
-      initProfile(); 
+      
+      // --- DÉMARRAGE DE L'APPLICATION ---
+      initProfile(); // Lancer l'initialisation
       console.log("Initialisation terminée.");
       
     }); // Fin de DOMContentLoaded
